@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect } from 'react'
 import { Layout } from '../../components/layout/Layout';
 import { NoFavoritos } from '../../components/ui';
