@@ -4,7 +4,7 @@ import { Layout } from '../../components/layout/Layout';
 import { NoFavoritos } from '../../components/ui';
 import { useState, FC } from 'react';
 import { localFavoriteEpisodie, localFavorites } from '../../utils';
-import { Grid, Card, CardActionArea } from '@mui/material';
+import { Grid, Card, CardActionArea, Typography } from '@mui/material';
 import { FavoritesCharacter, FavoritesEpisodies} from '../../components/rickAndMorty';
 import { ramApi } from '../../api';
 import { SmallEpisodies, SmallRM } from '../../interface';
@@ -27,21 +27,32 @@ const FavoritesPage:NextPage = () => {
   return (
     <Layout>
       <Grid container spacing={2}>
-          <Grid item sm={8} key='fav1'>
+
+          <Grid item sm={12} md={6} key='fav1'>
+          <Typography>
+                Personajes Favoritos
+              </Typography>
           {
               favoriteRAM.length === 0
               ? (<NoFavoritos />)
-              :<Grid container spacing={2}> 
+              :
+              
+              <Grid container spacing={2}> 
+                    
                   <FavoritesCharacter rickAndMorty={favoriteRAM}/>
                 </Grid>
           }
           </Grid>
 
-          <Grid item sm={8} key='fav2'>
+          <Grid item sm={12} md={6} key='fav2'>
+          <Typography>
+              Capitulos Favoritos
+            </Typography> 
           {
               favoriteRAM.length === 0
               ? (<NoFavoritos />)
-              :<Grid container spacing={2}> 
+              :<Grid container spacing={2}>
+                
                   <FavoritesEpisodies rickAndMorty={favoriteRAMEpisodies}/>
                 </Grid>
           }

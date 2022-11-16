@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import {CardActionArea, Card, Grid } from '@mui/material/';
+import {CardActionArea, Card, Grid, Link } from '@mui/material/';
 
 
 
@@ -14,6 +14,7 @@ export const FavoritesCharacter:FC<Props> = ({rickAndMorty}) => {
     {
     rickAndMorty.map(rickAndMorty => (
         <Grid item xs={12} sm={3} key={`gridKey${rickAndMorty}`}>
+          <Link href={`sById/${rickAndMorty}`}>
           <CardActionArea key={`cardKey${rickAndMorty}`}>
             <Card>
                 <img
@@ -24,6 +25,7 @@ export const FavoritesCharacter:FC<Props> = ({rickAndMorty}) => {
                 />
             </Card>
           </CardActionArea>
+          </Link>
 
         </Grid>   
     

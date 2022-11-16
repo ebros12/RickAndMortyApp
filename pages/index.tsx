@@ -38,7 +38,7 @@ const HomePage: NextPage<Props> = ({rickAndMorty}) => {
         <Grid container spacing={1} sx={{ margin:'1rem' }}>
             <Box flex={1} />
             <Box>
-              <Button variant="contained" endIcon={<ArrowRightIcon />}><NextLink href={`characters/1`} passHref>Pagina 2</NextLink></Button>
+              <Button variant="contained" endIcon={<ArrowRightIcon />}><NextLink href={`characters/2`} passHref>Pagina 2</NextLink></Button>
             </Box>
             <Box flex={1} />
         </Grid>
