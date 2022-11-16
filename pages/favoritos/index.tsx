@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import React, { useEffect } from 'react'
 import { Layout } from '../../components/layout/Layout';
 import { NoFavoritos } from '../../components/ui';
@@ -10,13 +10,9 @@ import { ramApi } from '../../api';
 import { SmallEpisodies, SmallRM } from '../../interface';
 import { GetServerSideProps, GetStaticProps, NextPage } from 'next';
 
-interface Props{
-  rickAndMortyEpisode:SmallEpisodies[];
-  rickAndMortyCharacter:SmallRM[];
-  
-}
 
-const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharacter}) => {
+
+const FavoritesPage:NextPage = () => {
 
   const [favoriteRAM, setFavoriteRAM] = useState<number[]>([]);
   const [favoriteRAMEpisodies, setFavoriteRAMEpisodies] = useState<number[]>([]);
@@ -26,14 +22,6 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
     setFavoriteRAMEpisodies(localFavoriteEpisodie.rickAndMortyEpisode());
   },[])
 
-  const rickAndMortyFilterCharacter = favoriteRAM.map(item =>{
-    return rickAndMortyCharacter.results.find((findItem) => findItem.id === item)
-  });
-
-
-  const rickAndMortyFilter = favoriteRAMEpisodies.map(item =>{
-    return rickAndMortyEpisode.results.find((findItem) => findItem.id === item)
-  });
 
 
   return (
@@ -44,7 +32,17 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
               favoriteRAM.length === 0
               ? (<NoFavoritos />)
               :<Grid container spacing={2}> 
-                  <FavoritesCharacter rickAndMorty={rickAndMortyFilterCharacter}/>
+                  <FavoritesCharacter rickAndMorty={favoriteRAM}/>
+                </Grid>
+          }
+          </Grid>
+
+          <Grid item sm={8} key='fav2'>
+          {
+              favoriteRAM.length === 0
+              ? (<NoFavoritos />)
+              :<Grid container spacing={2}> 
+                  <FavoritesEpisodies rickAndMorty={favoriteRAMEpisodies}/>
                 </Grid>
           }
           </Grid>
@@ -55,17 +53,5 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({params}) => {
-
-  const { data } = await ramApi.get<SmallEpisodies>(`/episode/?page=1`);
-  const character = await ramApi.get<SmallRM>(`/character/?page=1`);
-  
-  return {
-      props: {
-          rickAndMortyEpisode:data,
-          rickAndMortyCharacter:character.data
-      }
-  }
-}
 
 export default FavoritesPage;
