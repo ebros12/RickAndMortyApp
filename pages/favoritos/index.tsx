@@ -26,25 +26,15 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
     setFavoriteRAMEpisodies(localFavoriteEpisodie.rickAndMorty());
   },[])
 
-  if(rickAndMortyCharacter) {
-    const rickAndMortyFilterCharacter = favoriteRAM.map(item =>{
-      return rickAndMortyCharacter.find((findItem:SmallRM) => findItem.id === item) 
-    });
-  }else{
-    const rickAndMortyFilterCharacter = []
-  }
-
-  if(rickAndMortyEpisode) {
-    const rickAndMortyFilter = favoriteRAMEpisodies.map(item =>{
-      return rickAndMortyEpisode.find((findItem:SmallEpisodies) => findItem.id === item)
-    });
-  }else{
-    const rickAndMortyFilter = []
-  }
+  const rickAndMortyFilterCharacter = favoriteRAM.map(item =>{
+    
+    return rickAndMortyCharacter.results.find((findItem:SmallRM) => findItem.id === item)
+  });
 
 
-
- 
+  const rickAndMortyFilter = favoriteRAMEpisodies.map(item =>{
+    return rickAndMortyEpisode.results.find((findItem:SmallEpisodies) => findItem.id === item)
+  });
 
 
   return (
@@ -86,8 +76,8 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   
   return {
       props: {
-          rickAndMortyEpisode:data.results,
-          rickAndMortyCharacter:character.data.results
+          rickAndMortyEpisode:data,
+          rickAndMortyCharacter:character.data
       }
   }
 }
