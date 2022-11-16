@@ -17,7 +17,7 @@ const existRamFavorites = (id:number):boolean => {
     return favorites.includes(id);
 }
 
-const rickAndMorty = (): number[] => {
+const rickAndMortyEpisode = (): number[] => {
     return JSON.parse(localStorage.getItem('favoriteEpisodies') || '[]');
 }
 
@@ -26,5 +26,5 @@ const rickAndMorty = (): number[] => {
 export default {
     toggleFavoritesEpisodies,
     existRamFavorites,
-    rickAndMorty
+    rickAndMortyEpisode
 }

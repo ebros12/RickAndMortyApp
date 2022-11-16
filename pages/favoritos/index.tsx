@@ -23,7 +23,7 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
 
   useEffect(() =>{
     setFavoriteRAM(localFavorites.rickAndMorty());
-    setFavoriteRAMEpisodies(localFavoriteEpisodie.rickAndMorty());
+    setFavoriteRAMEpisodies(localFavoriteEpisodie.rickAndMortyEpisode());
   },[])
 
   const rickAndMortyFilterCharacter = favoriteRAM.map(item =>{
@@ -71,7 +71,7 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
 export const getServerSideProps: GetServerSideProps = async ({params}) => {
 
   const { data } = await ramApi.get<SmallEpisodies>(`/episode/?page=1`);
-  const character = await ramApi.get<SmallEpisodies>(`/character/?page=1`);
+  const character = await ramApi.get<SmallRM>(`/character/?page=1`);
   
   return {
       props: {
