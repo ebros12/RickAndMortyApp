@@ -27,12 +27,12 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
   },[])
 
   const rickAndMortyFilterCharacter = favoriteRAM.map(item =>{
-    return rickAndMortyCharacter.results.find((findItem:SmallRM) => findItem.id === item)
+    return rickAndMortyCharacter.results.find((findItem) => findItem.id === item)
   });
 
 
   const rickAndMortyFilter = favoriteRAMEpisodies.map(item =>{
-    return rickAndMortyEpisode.results.find((findItem:SmallEpisodies) => findItem.id === item)
+    return rickAndMortyEpisode.results.find((findItem) => findItem.id === item)
   });
 
 

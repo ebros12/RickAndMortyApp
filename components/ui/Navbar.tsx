@@ -20,7 +20,7 @@ export const Navbar = () => {
           navigateTo(`/search/${searchTerm}`);
       }else if(router.asPath === `/search/${router.query.query}`){
           navigateTo(`/search/${searchTerm}`);
-      }else if(router.asPath.includes('/favoritos')){
+      }else if(router.asPath === ('/favoritos')){
           navigateTo(`/search/${searchTerm}`);
       }else {
           navigateTo(`/SearchEpisode/${searchTerm}`);
