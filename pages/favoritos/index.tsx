@@ -8,7 +8,7 @@ import { Grid, Card, CardActionArea } from '@mui/material';
 import { FavoritesCharacter, FavoritesEpisodies} from '../../components/rickAndMorty';
 import { ramApi } from '../../api';
 import { SmallEpisodies, SmallRM } from '../../interface';
-import { GetStaticProps, NextPage } from 'next';
+import { GetServerSideProps, GetStaticProps, NextPage } from 'next';
 
 interface Props{
   rickAndMortyEpisode:SmallEpisodies[];
@@ -68,7 +68,7 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({params}) => {
+export const getServerSideProps: GetServerSideProps = async ({params}) => {
 
   const { data } = await ramApi.get<SmallEpisodies>(`/episode/?page=1`);
   const character = await ramApi.get<SmallEpisodies>(`/character/?page=1`);
