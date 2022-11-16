@@ -48,20 +48,7 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
                 </Grid>
           }
           </Grid>
-          <Grid item sm={4} key='fav2'>
-          {
-              favoriteRAM.length === 0
-              ? (<NoFavoritos />)
-              
-              : 
-              <Grid container spacing={2}>
-                {rickAndMortyFilter.map((rickAndMortyItem, i) =>(
-                  <FavoritesEpisodies key={i} episodeItem={rickAndMortyItem} />
-                ))}
-                </Grid>
-              
-          }
-          </Grid>
+
           </Grid>
     </Layout>
     
