@@ -71,7 +71,7 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
 export const getStaticProps: GetStaticProps = async ({params}) => {
 
   const { data } = await ramApi.get<SmallEpisodies>(`/episode/?page=1`);
-  const character = await ramApi.get<SmallEpisodies>(`/characters/?page=1`);
+  const character = await ramApi.get<SmallEpisodies>(`/character/?page=1`);
   
   return {
       props: {
