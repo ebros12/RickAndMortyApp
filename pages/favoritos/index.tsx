@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useEffect } from 'react'
 import { Layout } from '../../components/layout/Layout';
 import { NoFavoritos } from '../../components/ui';
@@ -13,7 +12,7 @@ import { GetStaticProps, NextPage } from 'next';
 interface Props{
   rickAndMortyEpisode:SmallEpisodies[];
   rickAndMortyCharacter:SmallRM[];
-
+  
 }
 
 const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharacter}) => {
@@ -27,7 +26,6 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
   },[])
 
   const rickAndMortyFilterCharacter = favoriteRAM.map(item =>{
-    
     return rickAndMortyCharacter.results.find((findItem:SmallRM) => findItem.id === item)
   });
 
@@ -72,7 +70,7 @@ const FavoritesPage:NextPage<Props> = ({rickAndMortyEpisode, rickAndMortyCharact
 export const getStaticProps: GetStaticProps = async ({params}) => {
 
   const { data } = await ramApi.get<SmallEpisodies>(`/episode/?page=1`);
-  const character = await ramApi.get<SmallEpisodies>(`/character/?page=1`);
+  const character = await ramApi.get<SmallEpisodies>(`/characters/?page=1`);
   
   return {
       props: {
